@@ -1,0 +1,10 @@
+*
+!*/
+!.*
+!*.py
+!*.pyx
+!*.md
+!*.conf
+!*.m
+!*.c
+!syllables/thetaOscillator/README.txt
