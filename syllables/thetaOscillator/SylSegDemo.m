@@ -1,6 +1,6 @@
 
 % 1) Load audio file
-[x,fs] = wavread('example.wav');
+[x,fs] = audioread('A08_000078-000171.wav');
 
 if(fs ~= 16000)
     x = resample(x,16000,fs);

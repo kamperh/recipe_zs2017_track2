@@ -15,7 +15,7 @@ import glob
 import os
 import sys
 
-sys.path.append(path.join("..", "..", "src"))
+sys.path.append(path.join("..", ".."))
 
 from paths import ZEROSPEECH_DATADIR
 from utils import shell

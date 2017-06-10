@@ -17,7 +17,7 @@ Mandarin train:
     ./get_segments_scp.py mandarin train
     ./get_cmvn_dd_htk.py mandarin train
     mkdir mandarin_train/numpy
-    ./write_htk_npz.py \ 
+    ./write_htk_npz.py \
         mandarin_train/cmvn_dd mandarin_train/numpy/mfcc.cmvn_dd.npz
 
 Mandarin test:
@@ -26,7 +26,7 @@ Mandarin test:
     ./get_segments_scp.py mandarin test
     ./get_cmvn_dd_htk.py mandarin test
     mkdir mandarin_test/numpy
-    ./write_htk_npz.py \ 
+    ./write_htk_npz.py \
         mandarin_test/cmvn_dd mandarin_test/numpy/mfcc.cmvn_dd.npz
 
 French train:
@@ -35,7 +35,7 @@ French train:
     ./get_segments_scp.py french train
     ./get_cmvn_dd_htk.py french train
     mkdir french_train/numpy
-    ./write_htk_npz.py \ 
+    ./write_htk_npz.py \
         french_train/cmvn_dd french_train/numpy/mfcc.cmvn_dd.npz
 
 French test:
@@ -44,7 +44,7 @@ French test:
     ./get_segments_scp.py french test
     ./get_cmvn_dd_htk.py french test
     mkdir french_test/numpy
-    ./write_htk_npz.py \ 
+    ./write_htk_npz.py \
         french_test/cmvn_dd french_test/numpy/mfcc.cmvn_dd.npz
 
 English train:
@@ -53,7 +53,7 @@ English train:
     ./get_segments_scp.py english train
     ./get_cmvn_dd_htk.py english train
     mkdir english_train/numpy
-    ./write_htk_npz.py \ 
+    ./write_htk_npz.py \
         english_train/cmvn_dd english_train/numpy/mfcc.cmvn_dd.npz
 
 English test:
@@ -62,5 +62,5 @@ English test:
     ./get_segments_scp.py english test
     ./get_cmvn_dd_htk.py english test
     mkdir english_test/numpy
-    ./write_htk_npz.py \ 
+    ./write_htk_npz.py \
         english_test/cmvn_dd english_test/numpy/mfcc.cmvn_dd.npz

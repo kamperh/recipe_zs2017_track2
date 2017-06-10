@@ -1,23 +1,20 @@
-ZeroSpeech2017 Experiments
-==========================
+ZeroSpeech2017
+==============
 
 
 Preliminaries
 -------------
 Install the zerospeech tools in `../src/zerospeech2017`:
 
-    # To-do
-    ...
+    ...  # to-do
 
 Alter all the paths in `paths.py` to match your directory structure.
-
 
 
 Feature extraction
 ------------------
 Extract MFCC features by running the steps in
 [features/readme.md](features/readme.md).
-
 
 
 Unsupervised syllable boundary detection
@@ -30,3 +27,19 @@ We use the unsupervised syllable boundary detection algorithm described in:
 
 Obtain the syllabe boundaries by running the steps in
 [syllables/readme.md](syllables/readme.md).
+
+
+Acoustic word embeddings: downsampling
+--------------------------------------
+We use one of the simplest methods to obtain acoustic word embeddings:
+downsampling. Different types of input features can be used. Run the steps in
+[downsample/readme.md](downsample/readme.md).
+
+
+Unsupervised segmentation and clustering
+----------------------------------------
+Segmentation and clustering is performed using the
+[ESKMeans](https://bitbucket.org/kamperh/eskmeans/) package. Run the steps
+in [segmentation/readme.md](segmentation/readme.md).
+
+

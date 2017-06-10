@@ -64,6 +64,7 @@ def main():
             f.readline()
             for line in f:
                 utt_label, start, end = line.strip().split(",")
+                utt_label = utt_label.replace("_", "-")
                 start = int(start)
                 end = int(end)
                 segments.append((utt_label, start, end))
@@ -84,8 +85,17 @@ def main():
             lengths[utt_label] = int(frames)
 
         print("Writing: " + output_scp)
+        missing = []
         with open(output_scp, "w") as f:
             for basename, start, end in segments:
+                if basename not in lengths:
+                    if basename not in missing:
+                        print("Warning: Missing audio: " + basename)
+                        missing.append(basename)
+                    continue
+                if start == end:
+                    print("Warning: Skipping: {} ({} to {})".format(basename, start, end))
+                    continue
                 if end > lengths[basename]:
                     if start > lengths[basename]:
                         print("Warning: Problem with lengths (truncating): " + basename)

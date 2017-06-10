@@ -67,6 +67,7 @@ def main():
             end = float(match.group(3))/100.
             duration = end - start
 
+            utt_label = utt_label.replace("-", "_")
             input_wav = path.join(ZEROSPEECH_DATADIR, args.subset, args.lang, utt_label + ".wav")
             output_wav = path.join(path.abspath(output_dir), label + ".wav")
             sox_cmd = "sox " + input_wav + " " + output_wav + " trim " + str(start) + " " + str(duration)
