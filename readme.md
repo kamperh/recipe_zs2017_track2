@@ -7,6 +7,12 @@ This is a preliminary version of our system. This is not a final recipe, and
 is still being worked on.
 
 
+Overview
+--------
+A description of the challenge can be found here:
+<http://sapience.dec.ens.fr/bootphon/2017/index.html>.
+
+
 Disclaimer
 ----------
 The code provided here is not pretty. But I believe that research should be
