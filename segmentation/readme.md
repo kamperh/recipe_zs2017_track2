@@ -310,4 +310,15 @@ The final systems for submission are:
     kmodels/LANG1/mfcc.n_10.n_max_4.unsup_syl/779ab9f219/
     kmodels/LANG2/mfcc.n_10.n_max_4.unsup_syl/feb986626a/
 
+Copy the files to the submission directory:
 
+    cp kmodels/mandarin/mfcc.n_10.n_max_4.unsup_syl/f764a7a56d/classes.txt \
+        ../submission/track2/mandarin.txt
+    cp kmodels/french/mfcc.n_10.n_max_4.unsup_syl/4f71f9796b/classes.txt \
+        ../submission/track2/french.txt
+    cp kmodels/english/mfcc.n_10.n_max_4.unsup_syl/cf360cf9da/classes.txt \
+        ../submission/track2/english.txt
+    cp kmodels/LANG1/mfcc.n_10.n_max_4.unsup_syl/779ab9f219/classes.txt \
+        ../submission/track2/LANG1.txt
+    cp kmodels/LANG2/mfcc.n_10.n_max_4.unsup_syl/feb986626a/classes.txt \
+        ../submission/track2/LANG2.txt
