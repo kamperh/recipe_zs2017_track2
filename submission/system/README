@@ -1,0 +1,65 @@
+Embedded Segmental K-Means for ZeroSpeech2017 Track 2
+=====================================================
+
+Code recipe
+-----------
+The recipe for the system is available here:
+<https://github.com/kamperh/recipe_zs2017_track2>.
+
+
+Digital object identifier (DOI)
+-------------------------------
+Following <https://guides.github.com/activities/citable-code/>, we obtain the
+following DOI for the above repository:
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.814993.svg)](https://doi.org/10.5281/zenodo.814993).
+The release matching this DOI can be downloaded here:
+<https://zenodo.org/record/814993/files/kamperh/recipe_zs2017_track2-v0.1-alpha.zip>.
+
+
+Hardware configuration
+----------------------
+Running ``uname -a`` produces:
+
+    Linux cpu18.ttic.edu 3.10.0-514.10.2.el7.x86_64 #1 SMP Fri Mar 3 00:04:05
+    UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+
+
+Software configuration
+----------------------
+Running ``cat /proc/cpuinfo`` produces:
+
+    processor   : 0
+    vendor_id   : GenuineIntel
+    cpu family  : 6
+    model       : 63
+    model name  : Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz
+    stepping    : 2
+    microcode   : 0x38
+    cpu MHz     : 1199.953
+    cache size  : 25600 KB
+    physical id : 0
+    siblings    : 10
+    core id     : 0
+    cpu cores   : 10
+    apicid      : 0
+    initial apicid  : 0
+    fpu     : yes
+    fpu_exception   : yes
+    cpuid level : 15
+    wp      : yes
+    flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov
+    pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx
+    pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl
+    xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor
+    ds_cpl vmx smx est tm2 ssse3 fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2
+    x2apic movbe popcnt tsc_deadline_timer xsave avx f16c rdrand lahf_lm abm
+    ida arat epb pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase
+    tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm xsaveopt cqm_llc
+    cqm_occup_llc
+    bogomips    : 4599.92
+    clflush size    : 64
+    cache_alignment : 64
+    address sizes   : 46 bits physical, 48 bits virtual
+    power management:
+
+We use 15 such cores.

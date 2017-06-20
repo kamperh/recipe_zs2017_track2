@@ -1,0 +1,66 @@
+Results for ZeroSpeech2017 Track 2
+==================================
+
+In the `segmentation/` directory of
+<https://github.com/kamperh/recipe_zs2017_track2>, the following was executed
+for the different languages:
+
+    # Mandarin
+    ./ksegment.py \
+        --K_max 0.1landmarks \
+        --min_duration 5 \
+        --init_am_n_iter 0 \
+        --segment_n_iter 5 \
+        --n_slices_max 4 \
+        --p_boundary_init 0.5 \
+        --n_cpus 15 \
+        --n_batches 5 \
+        data/mandarin/mfcc.n_10.n_max_4.unsup_syl
+
+    # French
+    ./ksegment.py \
+        --K_max 0.1landmarks \
+        --min_duration 5 \
+        --init_am_n_iter 0 \
+        --segment_n_iter 5 \
+        --n_slices_max 4 \
+        --p_boundary_init 0.5 \
+        --n_cpus 15 \
+        --n_batches 5 \
+        data/french/mfcc.n_10.n_max_4.unsup_syl
+
+    # English
+    ./ksegment.py \
+        --K_max 0.1landmarks \
+        --min_duration 5 \
+        --init_am_n_iter 0 \
+        --segment_n_iter 5 \
+        --n_slices_max 4 \
+        --p_boundary_init 0.5 \
+        --n_cpus 15 \
+        --n_batches 5 \
+        data/english/mfcc.n_10.n_max_4.unsup_syl
+
+    # LANG1
+    ./ksegment.py \
+        --K_max 0.1landmarks \
+        --min_duration 5 \
+        --init_am_n_iter 0 \
+        --segment_n_iter 5 \
+        --n_slices_max 4 \
+        --p_boundary_init 0.5 \
+        --n_cpus 15 \
+        --n_batches 5 \
+        data/LANG1/mfcc.n_10.n_max_4.unsup_syl/
+
+    # LANG2
+    ./ksegment.py \
+        --K_max 0.1landmarks \
+        --min_duration 5 \
+        --init_am_n_iter 0 \
+        --segment_n_iter 5 \
+        --n_slices_max 4 \
+        --p_boundary_init 0.5 \
+        --n_cpus 15 \
+        --n_batches 5 \
+        data/LANG2/mfcc.n_10.n_max_4.unsup_syl/

@@ -322,3 +322,9 @@ Copy the files to the submission directory:
         ../submission/track2/LANG1.txt
     cp kmodels/LANG2/mfcc.n_10.n_max_4.unsup_syl/feb986626a/classes.txt \
         ../submission/track2/LANG2.txt
+
+Package the submission directory:
+
+    cd ../  # root repository directory
+    ../src/zerospeech2017_surprise/make_submission_archive.sh submission/
+    mv submission.tar.gz kamper+livescu+goldwater_zs2017_track2.tar.gz
