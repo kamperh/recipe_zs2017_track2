@@ -15,7 +15,7 @@ import sys
 
 sys.path.append(path.join("..", ".."))
 
-from paths import ZEROSPEECH_TOOLDIR
+from paths import ZEROSPEECH_TOOLDIR, ZEROSPEECH_DATADIR
 from utils import shell
 
 
@@ -26,7 +26,7 @@ from utils import shell
 def check_argv():
     """Check the command line arguments."""
     parser = argparse.ArgumentParser(description=__doc__.strip().split("\n")[0], add_help=False)
-    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin"])
+    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin", "LANG1", "LANG2"])
     parser.add_argument("subset", type=str, choices=["train", "test"])
     if len(sys.argv) == 1:
         parser.print_help()
@@ -55,9 +55,16 @@ def main():
 
     if args.subset == "train":
         
-        vad_fn = path.join(
-            ZEROSPEECH_TOOLDIR, "track2", "baseline", "baseline_" + args.lang, "data", args.lang + "_vad"
-            )
+        if "LANG" in args.lang:
+            vad_fn = path.join(
+                ZEROSPEECH_DATADIR, "surprise", "train", args.lang, args.lang +
+                "_VAD.csv"
+                )
+        else:
+            vad_fn = path.join(
+                ZEROSPEECH_TOOLDIR, "track2", "baseline", "baseline_" +
+                args.lang, "data", args.lang + "_vad"    
+                )
         print("Reading: " + vad_fn)
         segments = []  # (utterance, start_frame, end_frame)
         with open(vad_fn) as f:
@@ -65,8 +72,12 @@ def main():
             for line in f:
                 utt_label, start, end = line.strip().split(",")
                 utt_label = utt_label.replace("_", "-")
-                start = int(start)
-                end = int(end)
+                if "LANG" in args.lang:
+                    start = int(round(float(start)*100))
+                    end = int(round(float(end)*100))
+                else:
+                    start = int(start)
+                    end = int(end)
                 segments.append((utt_label, start, end))
 
         print("Running: HList for lengths")
@@ -99,6 +110,10 @@ def main():
                 if end > lengths[basename]:
                     if start > lengths[basename]:
                         print("Warning: Problem with lengths (truncating): " + basename)
+                        print lengths[basename]
+                        print start
+                        print end
+                        assert False
                         continue
                     end = lengths[basename] - 1
                 segment_label = "{}_{:08d}-{:08d}.mfcc".format(basename, start, end)

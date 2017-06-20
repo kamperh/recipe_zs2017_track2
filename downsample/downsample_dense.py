@@ -26,13 +26,13 @@ OUTPUT_DIR = "embeddings"
 def check_argv():
     """Check the command line arguments."""
     parser = argparse.ArgumentParser(description=__doc__.strip().split("\n")[0], add_help=False)
-    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin"])
+    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin", "LANG1", "LANG2"])
     parser.add_argument("subset", type=str, choices=["train"])  #, "test"])
     # parser.add_argument("landmarks", type=str, choices=["gtphone", "unsup_syl"], help="landmarks set")
     parser.add_argument("landmarks", type=str, choices=["unsup_syl"], help="landmarks set")
     parser.add_argument(
         # "feature_type", type=str, help="input feature type", choices=["mfcc", "cae.d_10", "cae.d_13"]
-        "feature_type", type=str, help="input feature type", choices=["mfcc"]
+        "feature_type", type=str, help="input feature type", choices=["mfcc", "okko0"]
         )
     parser.add_argument("--n", type=int, help="number of samples (default: %(default)s)", default=10)
     parser.add_argument(
@@ -72,6 +72,10 @@ def main():
     if args.feature_type == "mfcc":
         input_npz_fn = path.join(
             "..", "features", "mfcc", args.lang + "_" + args.subset, "numpy", "mfcc.cmvn_dd.npz"
+            )
+    elif args.feature_type == "okko0":
+        input_npz_fn = path.join(
+            "..", "features", "okko0", args.lang + "_" + args.subset, "segments.npz"
             )
     else:
         assert False

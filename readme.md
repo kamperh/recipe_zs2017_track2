@@ -6,9 +6,20 @@ Preliminaries
 -------------
 Install the zerospeech tools in `../src/zerospeech2017`:
 
-    ...  # to-do
+    git clone https://github.com/bootphon/zerospeech2017.git \
+        ../src/zerospeech2017
+    # To-do: add installation and data download instructions
+    git clone https://github.com/bootphon/zerospeech2017_surprise.git \
+        ../src/zerospeech2017_surprise/
 
-Alter all the paths in `paths.py` to match your directory structure.
+Get the surprise data:
+    
+    cd ../src/zerospeech2017_surprise/
+    source download_surprise_data.sh \
+        /share/data/lang/users/kamperh/zerospeech2017/data/surprise/
+    cd -
+
+Update all the paths in `paths.py` to match your directory structure.
 
 
 Feature extraction
@@ -41,5 +52,6 @@ Unsupervised segmentation and clustering
 Segmentation and clustering is performed using the
 [ESKMeans](https://bitbucket.org/kamperh/eskmeans/) package. Run the steps
 in [segmentation/readme.md](segmentation/readme.md).
+
 
 

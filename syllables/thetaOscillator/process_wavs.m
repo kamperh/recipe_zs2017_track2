@@ -6,7 +6,9 @@ clear all;
 % Read list of wav files
 % basename = 'mandarin_train';
 % basename = 'french_train';
-basename = 'english_train';
+% basename = 'english_train';
+% basename = 'LANG1_train';
+basename = 'LANG2_train';
 fid = fopen(['../wavs/' basename '.list']);
 wav_files = textscan(fid, '%s', 'Delimiter', '\n');
 wav_files = wav_files{1};

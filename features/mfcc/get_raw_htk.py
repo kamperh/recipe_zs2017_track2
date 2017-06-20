@@ -30,7 +30,7 @@ CONFIG_FN = path.join("config", "hcopy.wav.mfcc.wb.conf")
 def check_argv():
     """Check the command line arguments."""
     parser = argparse.ArgumentParser(description=__doc__.strip().split("\n")[0], add_help=False)
-    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin"])
+    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin", "LANG1", "LANG2"])
     parser.add_argument("subset", type=str, choices=["train", "test"])
     if len(sys.argv) == 1:
         parser.print_help()
@@ -47,10 +47,13 @@ def main():
 
     print(datetime.now())
 
+    zerospeech_datadir = ZEROSPEECH_DATADIR
+    if "LANG" in args.lang:
+        zerospeech_datadir = path.join(zerospeech_datadir, "surprise")
     if args.subset == "train":
-        wavs = path.join(ZEROSPEECH_DATADIR, args.subset, args.lang, "*.wav")
+        wavs = path.join(zerospeech_datadir, args.subset, args.lang, "*.wav")
     elif args.subset == "test":
-        wavs = path.join(ZEROSPEECH_DATADIR, args.subset, args.lang, "*", "*.wav")
+        wavs = path.join(zerospeech_datadir, args.subset, args.lang, "*", "*.wav")
 
     basedir = args.lang + "_" + args.subset
     target_dir = path.join(basedir, "raw")

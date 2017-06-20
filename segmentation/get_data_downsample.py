@@ -28,11 +28,11 @@ OUTPUT_DIR = "data"
 def check_argv():
     """Check the command line arguments."""
     parser = argparse.ArgumentParser(description=__doc__.strip().split("\n")[0], add_help=False)
-    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin"])
+    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin", "LANG1", "LANG2"])
     parser.add_argument("landmarks", type=str, choices=["gtphone", "unsup_syl"], help="landmarks set")
     parser.add_argument(
         # "feature_type", type=str, help="input feature type", choices=["mfcc", "cae.d_10", "cae.d_13"]
-        "feature_type", type=str, help="input feature type", choices=["mfcc"] #, "cae.d_10", "cae.d_13"]
+        "feature_type", type=str, help="input feature type", choices=["mfcc", "okko0"] #, "cae.d_10", "cae.d_13"]
         )
     parser.add_argument(
         "n_samples", type=int, help="the number of samples used in downsampling"

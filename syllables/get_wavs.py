@@ -30,7 +30,7 @@ shell = lambda command: subprocess.Popen(command, shell=True, stdout=subprocess.
 def check_argv():
     """Check the command line arguments."""
     parser = argparse.ArgumentParser(description=__doc__.strip().split("\n")[0], add_help=False)
-    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin"])
+    parser.add_argument("lang", type=str, choices=["english", "french", "mandarin", "LANG1", "LANG2"])
     parser.add_argument("subset", type=str, choices=["train"])  #, "test"])
     if len(sys.argv) == 1:
         parser.print_help()
@@ -56,6 +56,9 @@ def main():
 
     print("Reading: " + raw_mfcc_scp)
     wavs = []
+    zerospeech_datadir = ZEROSPEECH_DATADIR
+    if "LANG" in args.lang:
+        zerospeech_datadir = path.join(zerospeech_datadir, "surprise")
     with open(raw_mfcc_scp) as f:
         for line in f:
             match = re.match("(.*)\.mfcc=.*\[(.*),(.*)\]", line)
@@ -68,7 +71,7 @@ def main():
             duration = end - start
 
             utt_label = utt_label.replace("-", "_")
-            input_wav = path.join(ZEROSPEECH_DATADIR, args.subset, args.lang, utt_label + ".wav")
+            input_wav = path.join(zerospeech_datadir, args.subset, args.lang, utt_label + ".wav")
             output_wav = path.join(path.abspath(output_dir), label + ".wav")
             sox_cmd = "sox " + input_wav + " " + output_wav + " trim " + str(start) + " " + str(duration)
             shell(sox_cmd)

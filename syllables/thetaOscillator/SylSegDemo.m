@@ -1,6 +1,6 @@
 
 % 1) Load audio file
-[x,fs] = audioread('A08_000078-000171.wav');
+[x,fs] = audioread('/share/data/speech-multiview/kamperh/projects/edinburgh/zs2017/syllables/wavs/LANG2_train/LANG2-18_00060006-00060126.wav');
 
 if(fs ~= 16000)
     x = resample(x,16000,fs);

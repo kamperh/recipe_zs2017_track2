@@ -54,9 +54,14 @@ def cat_zs2017_wavs(lang, tokens, wav_fn, pad=None):
     tmp_basename = str(uuid.uuid4())
     tmp_wav = tmp_basename + ".wav"
 
+    zerospeech_datadir = ZEROSPEECH_DATADIR
+    if "LANG" in lang:
+        zerospeech_datadir = path.join(zerospeech_datadir, "surprise")
+
     print("Writing: " + wav_fn)
     for utt_label, start, end in tokens:
-        input_wav = path.join(ZEROSPEECH_DATADIR, "train", lang, utt_label + ".wav")
+        utt_label = utt_label.replace("-", "_")
+        input_wav = path.join(zerospeech_datadir, "train", lang, utt_label + ".wav")
         duration = end - start
         sox_cmd = "sox " + input_wav + " " + tmp_wav + " trim " + str(start) + " " + str(duration)
         if pad is not None:
@@ -86,6 +91,10 @@ def main():
         lang = "french"
     elif "english" in args.model_dir:
         lang = "english"
+    elif "LANG1" in args.model_dir:
+        lang = "LANG1"
+    elif "LANG2" in args.model_dir:
+        lang = "LANG2"
     else:
         assert False, "language not in model directory name"
 

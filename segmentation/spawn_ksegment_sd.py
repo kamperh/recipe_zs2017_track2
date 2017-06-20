@@ -21,7 +21,7 @@ import sys
 from get_data_sd import mandarin_speakers, french_speakers, english_speakers
 from ksegment import default_options_dict, MODEL_DIR
 
-sd_options = ["min_duration", "init_am_n_iter", "segment_n_iter", "n_slices_max","p_boundary_init"]
+sd_options = ["min_duration", "init_am_n_iter", "segment_n_iter", "n_slices_max","p_boundary_init", "K_max"]
 
 # mandarin_speakers = ["A08", "A33", "A36"]
 
@@ -41,6 +41,10 @@ def check_argv():
     #     "--rnd_seed", type=int, help="default: %(default)s",
     #     default=default_options_dict["rnd_seed"]
     #     )
+    parser.add_argument(
+        "--K_max", type=str, help="default: %(default)s",
+        default=default_options_dict["K_max"]
+        )
     parser.add_argument(
         "--min_duration", type=int, help="default: %(default)s",
         default=default_options_dict["min_duration"]
@@ -92,10 +96,12 @@ def main():
     # Set options (this is actually just for hashing purposes)
     options_dict = default_options_dict.copy()
     options_dict["data_dir"] = path.normpath(args.data_dir)
+    options_dict["K_max"] = args.K_max
     options_dict["min_duration"] = args.min_duration
     options_dict["init_am_n_iter"] = args.init_am_n_iter
     options_dict["segment_n_iter"] = args.segment_n_iter
     options_dict["p_boundary_init"] = args.p_boundary_init
+    options_dict["n_slices_max"] = args.n_slices_max
 
     hasher = hashlib.md5(repr(sorted(options_dict.items())).encode("ascii"))
     hash_str = hasher.hexdigest()[:10]
